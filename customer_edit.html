@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>Edit Customer:</h2>
+  <form method="POST" action="{{ url_for('customers.customer_edit', customer_id=customer['customer_id']) }}">
+    
+    <!-- Name -->
+    <div class="mb-3">
+      <label class="form-label">Name</label>
+      <input type="text" class="form-control" name="name" value="{{ customer['name'] }}" required>
+    </div>
+
+    <!-- Email -->
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-control" name="email" value="{{ customer['email'] }}" required>
+    </div>
+
+    <!-- Phone -->
+    <div class="mb-3">
+      <label class="form-label">Phone</label>
+      <input type="text" class="form-control" name="phone" value="{{ customer.get('phone', '') }}">
+    </div>
+
+    <!-- Address -->
+    <!-- <div class="mb-3">
+      <label class="form-label">Address</label>
+      <textarea class="form-control" name="address" rows="2">{{ customer.get('address', '') }}</textarea>
+    </div> -->
+    <!-- Address -->
+<div class="mb-3">
+  <label class="form-label">Address</label>
+  <div class="row">
+    <div class="col">
+      <input type="text" class="form-control" name="street" placeholder="Street" value="{{ customer.get('address', {}).get('street', '') }}">
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" name="city" placeholder="City" value="{{ customer.get('address', {}).get('city', '') }}">
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col">
+      <input type="text" class="form-control" name="state" placeholder="State" value="{{ customer.get('address', {}).get('state', '') }}">
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" name="zip" placeholder="Zip Code" value="{{ customer.get('address', {}).get('zip', '') }}">
+    </div>
+  </div>
+</div>
+
+
+    <!-- Status -->
+    <div class="mb-3">
+      <label class="form-label">Status</label>
+      <select class="form-select" name="status">
+        <option value="Active" {% if customer['status']=="Active" %}selected{% endif %}>Active</option>
+        <option value="Inactive" {% if customer['status']=="Inactive" %}selected{% endif %}>Inactive</option>
+      </select>
+    </div>
+
+    <!-- Buttons -->
+    <button type="submit" class="btn btn-primary">Update Customer</button>
+    <a href="{{ url_for('customers.customers') }}" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+{% endblock %}

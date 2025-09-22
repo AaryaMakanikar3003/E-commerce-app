@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+  <h2>Edit Product:</h2>
+  <form method="POST" action="{{ url_for('products.product_edit', product_id=product_to_be_edited['product_id']) }}">
+    
+    <!-- Name -->
+    <div class="mb-3">
+      <label class="form-label">Name</label>
+      <input type="text" class="form-control" name="name" value="{{ product_to_be_edited['name'] }}" required>
+    </div>
+
+    <!-- Description -->
+    <div class="mb-3">
+      <label class="form-label">Description</label>
+      <textarea class="form-control" name="description" rows="3">{{ product_to_be_edited['description'] }}</textarea>
+    </div>
+
+    <!-- Price -->
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <label class="form-label">Price</label>
+        <input type="number" step="0.01" class="form-control" name="price" value="{{ product_to_be_edited['price'] }}">
+      </div>
+      <div class="col-md-4 mb-3">
+        <label class="form-label">Compare at Price</label>
+        <input type="number" step="0.01" class="form-control" name="compare_at_price" value="{{ product_to_be_edited['compare_at_price'] }}">
+      </div>
+      <div class="col-md-4 mb-3">
+        <label class="form-label">Cost per Item</label>
+        <input type="number" step="0.01" class="form-control" name="cost_per_item" value="{{ product_to_be_edited['cost_per_item'] }}">
+      </div>
+    </div>
+
+    <!-- Images -->
+    <div class="mb-3">
+      <label class="form-label">Image URL</label>
+      <input type="text" class="form-control" name="images" value="{{ product_to_be_edited['images'][0] if product_to_be_edited.get('images') else '/static/default.png' }}">
+    </div>
+
+    <!-- Weight -->
+    <div class="mb-3">
+      <label class="form-label">Weight (g)</label>
+      <input type="number" step="0.01" class="form-control" name="weight" value="{{ product_to_be_edited['weight'] }}">
+    </div>
+
+    <!-- Inventory -->
+    <div class="mb-3">
+      <label class="form-label">Inventory Quantity</label>
+      <input type="number" class="form-control" name="inventory_quantity" value="{{ product_to_be_edited['inventory_quantity'] }}">
+    </div>
+
+    <!-- Status -->
+    <div class="mb-3">
+      <label class="form-label">Status</label>
+      <select class="form-select" name="status">
+        <option value="Active" {% if product_to_be_edited['status']=="Active" %}selected{% endif %}>Active</option>
+        <option value="Inactive" {% if product_to_be_edited['status']=="Inactive" %}selected{% endif %}>Inactive</option>
+      </select>
+    </div>
+
+    <!-- Submit -->
+    <button type="submit" class="btn btn-primary">Update Product</button>
+    <a href="{{ url_for('products.products') }}" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+{% endblock %}
+
