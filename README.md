@@ -37,46 +37,46 @@ The system supports two types of users:
 
 ecommerce_app/
 │
-├── app.py                 # Main Flask app entry point
-├── config.py              # Configurations (DB URI, secret keys, etc.)
-├── requirements.txt       # Python dependencies
-├── README.md              # Project description, setup, usage
+├── app.py # Main Flask app entry point
+├── config.py # Configurations (DB URI, secret keys, etc.)
+├── requirements.txt # Python dependencies
+├── README.md # Project description, setup, usage
 │
-├── controllers/           # Route handlers
-│   ├── __init__.py
-│   ├── auth.py
-│   ├── products.py
-│   ├── orders.py
-│   └── customers.py
+├── controllers/ # Route handlers
+│ ├── init.py
+│ ├── auth.py
+│ ├── products.py
+│ ├── orders.py
+│ └── customers.py
 │
-├── models/                # Only product model exists
-│   ├── __init__.py
-│   └── products.py
+├── models/ # Only product model exists
+│ ├── init.py
+│ └── products.py
 │
-├── templates/             # All HTML files
-│   ├── boilerplate/       # Common HTML parts
-│   │   ├── navbar.html
-│   │   └── footer.html
-│   ├── product_add.html
-│   ├── product_edit.html
-│   ├── product_list.html
-│   ├── order_add.html
-│   ├── order_list.html
-│   ├── customer_profile.html
-│   ├── customer_list.html
-│   ├── login.html
-│   └── register.html
+├── templates/ # All HTML files
+│ ├── boilerplate/ # Common HTML parts
+│ │ ├── navbar.html
+│ │ └── footer.html
+│ ├── product_add.html
+│ ├── product_edit.html
+│ ├── product_list.html
+│ ├── order_add.html
+│ ├── order_list.html
+│ ├── customer_profile.html
+│ ├── customer_list.html
+│ ├── login.html
+│ └── register.html
 │
-├── static/                # Static files
-│   └── style.css          # Only CSS file directly here
+├── static/ # Static files
+│ └── style.css # Only CSS file directly here
 │
-└── datasets/              # Initial data and seed files
-    ├── users_init.py
-    ├── users_data.py
-    ├── products_init.py
-    ├── products_data.py
-    ├── customers_init.py
-    └── customers_data.py
+└── datasets/ # Initial data and seed files
+├── users_init.py
+├── users_data.py
+├── products_init.py
+├── products_data.py
+├── customers_init.py
+└── customers_data.py
 
 
 ---
