@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+  <div class="row">
+    {% for product in products %}
+      <div class="col-md-3 mb-4">
+        <div class="card h-100">
+          <div class="image-container">
+            <img src="{{ product['images'][0] if product.get('images') else '/static/default.png' }}" class="card-img-top product-img" alt="img">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{ product['name'] }}</h5>
+            <p class="card-text">{{ product['description'] }}...</p>
+            <p class="card-text"><strong>Status:</strong> {{ product['status'] }}</p>
+            <a href="{{ url_for('products.product_details', product_id=product['product_id']) }}" class="btn btn-primary">See more</a>
+            <!-- blueprint name, func name in app.py -->
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
